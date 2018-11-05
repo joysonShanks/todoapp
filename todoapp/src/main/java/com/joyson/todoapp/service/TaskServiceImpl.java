@@ -1,4 +1,4 @@
-package com.vit.todoapp.service;
+package com.joyson.todoapp.service;
 
 import java.util.Optional;
 
@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vit.todoapp.model.Task;
-import com.vit.todoapp.repository.TaskRepository;
+import com.joyson.todoapp.model.Task;
+import com.joyson.todoapp.repository.TaskRepository;
 
 @Service
 @Transactional

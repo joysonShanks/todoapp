@@ -1,9 +1,9 @@
-package com.vit.todoapp.service;
+package com.joyson.todoapp.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.vit.todoapp.model.Todo;
+import com.joyson.todoapp.model.Todo;
 
 public interface TodoService {
 

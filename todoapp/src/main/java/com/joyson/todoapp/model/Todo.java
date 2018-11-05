@@ -1,4 +1,4 @@
-package com.vit.todoapp.model;
+package com.joyson.todoapp.model;
 
 import java.sql.Date;
 import java.util.HashSet;
@@ -9,13 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import com.vit.todoapp.utils.State;
+import com.joyson.todoapp.utils.State;
 
 @Entity(name = "todo")
 public class Todo {
@@ -26,8 +25,9 @@ public class Todo {
 	private Long id;
 
 	@OneToMany
-	@JoinColumn(name = "tasks")
-	@Cascade(CascadeType.ALL)
+	//@JoinColumn(name = "tasks") --> Creates new column
+	// CascadeType.ALL --> This one propagates insert operations as well, hence we get "Detached entity passed to persist error"
+	@Cascade(CascadeType.DELETE)
 	private Set<Task> tasks = new HashSet<Task>();
 
 	private String title;

@@ -1,8 +1,8 @@
-package com.vit.todoapp.service;
+package com.joyson.todoapp.service;
 
 import java.util.Optional;
 
-import com.vit.todoapp.model.Task;
+import com.joyson.todoapp.model.Task;
 
 public interface TaskService {
 

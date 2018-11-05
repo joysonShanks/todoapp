@@ -1,4 +1,4 @@
-package com.vit.todoapp.model;
+package com.joyson.todoapp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

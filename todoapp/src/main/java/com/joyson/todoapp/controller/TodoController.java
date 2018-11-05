@@ -1,4 +1,4 @@
-package com.vit.todoapp.controller;
+package com.joyson.todoapp.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vit.todoapp.model.Task;
-import com.vit.todoapp.model.Todo;
-import com.vit.todoapp.model.TodoResponse;
-import com.vit.todoapp.service.TaskService;
-import com.vit.todoapp.service.TodoService;
+import com.joyson.todoapp.model.Task;
+import com.joyson.todoapp.model.Todo;
+import com.joyson.todoapp.model.TodoResponse;
+import com.joyson.todoapp.service.TaskService;
+import com.joyson.todoapp.service.TodoService;
 
 @RequestMapping(path = "/todo-app")
 @RestController
