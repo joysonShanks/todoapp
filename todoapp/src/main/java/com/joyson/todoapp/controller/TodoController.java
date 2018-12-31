@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joyson.todoapp.error.TodoException;
 import com.joyson.todoapp.model.Task;
 import com.joyson.todoapp.model.Todo;
 import com.joyson.todoapp.model.TodoResponse;
@@ -55,8 +56,11 @@ public class TodoController {
 	}
 
 	@PostMapping("/todo")
-	public ResponseEntity<TodoResponse> saveTask(@RequestBody Todo todo) {
+	public ResponseEntity<TodoResponse> saveTask(@RequestBody Todo todo) throws Exception {
 		TodoResponse todoResponse = new TodoResponse();
+		if (todo.getTitle() == null || todo.getCreatedDate() == null || todo.getState() == null) {
+			throw new Exception("Invalid todo body");
+		}
 		try {
 			todoResponse.setId(todoService.save(todo));
 			todoResponse.setMessage("Todo created");
@@ -72,13 +76,13 @@ public class TodoController {
 	public ResponseEntity<Todo> getTodo(@PathVariable Long todoId) {
 		Optional<Todo> todo = todoService.findById(todoId);
 		if (!todo.isPresent()) {
-			new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			throw new TodoException("id-" + todoId + " is not present");
 		}
 		return new ResponseEntity<Todo>(todo.get(), HttpStatus.OK);
 	}
 
 	@GetMapping("/todo")
-	public ResponseEntity<List<Todo>> getAllTodo(@PathVariable Long todoId) {
+	public ResponseEntity<List<Todo>> getAllTodo() {
 		return new ResponseEntity<List<Todo>>(todoService.findAll(), HttpStatus.OK);
 	}
 
